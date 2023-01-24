@@ -1,7 +1,7 @@
 {
   "name": "parrot-vscode",
   "displayName": "parrot-vscode",
-  "description": "",
+  "description": "AI autocomplete plugin for commit messages!",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.74.0"
@@ -29,6 +29,15 @@
           "group": "navigation"
         }
       ]
+    },
+    "configuration": {
+      "title": "Parrot Commit Message Autocomplete",
+      "properties": {
+        "apiEndpoint": {
+          "type": ["string", "null"],
+          "description": "Specify the Parrot Inference Server URL"
+        }
+      }
     }
   },
   "scripts": {

@@ -2,8 +2,6 @@ import * as vscode from "vscode";
 import { GitExtension, Repository } from "./api/git";
 import fetch from 'node-fetch';
 
-const API_DIFF_ENDPOINT = 'http://127.0.0.1:8000/summarize-raw';
-
 export const getMainRepostiory = () => {
   const gitExtensions = vscode.extensions.getExtension<GitExtension>("vscode.git");
   if (!gitExtensions || !gitExtensions.exports) {
@@ -22,7 +20,12 @@ export const fetchCommitMessage = async (predictionCount: number): Promise<any[]
     'num_return_sequences': predictionCount
 	};
 
-	const response = await fetch(API_DIFF_ENDPOINT, {
+  const apiEndpoint: string | null = vscode.workspace.getConfiguration('parrot-vscode').apiEndpoint;
+  if (apiEndpoint === undefined || apiEndpoint === null || apiEndpoint === '') {
+    throw new Error("To use Parrot use have to specify inference server URL");
+  }
+
+	const response = await fetch(apiEndpoint + "/summarize-raw", {
 		method: 'post',
 		body: JSON.stringify(payload),
 		headers: {'Content-Type': 'application/json'}
