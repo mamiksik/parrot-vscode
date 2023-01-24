@@ -6,7 +6,7 @@
 
 Welcome to Parrot VSCode, the AI autocomplete plugin for commit messages! With Parrot, you can save time and improve the quality of your commit messages by using machine learning to generate suggestions for what to include in your message.
 
-<!-- ![](images/autocomplet-preview.png) -->
+![](images/autocomplet-preview.png)
 
 #### See also:
  - 🤖 [Parrot commit generation Model](https://huggingface.co/mamiksik/CommitPredictorT5PL)

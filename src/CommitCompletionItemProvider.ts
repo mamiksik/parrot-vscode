@@ -1,6 +1,6 @@
 
 import * as vscode from 'vscode';
-import { fetchCommitMessage } from './utils';
+import { capitalize, fetchCommitMessage } from './utils';
 
 export class CommitCompletionItemProvider implements vscode.CompletionItemProvider {
     async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext): Promise<vscode.CompletionItem[]> {
@@ -17,7 +17,7 @@ export class CommitCompletionItemProvider implements vscode.CompletionItemProvid
         let completionItems: vscode.CompletionItem[] = [];
         for (const suggestion of suggestions) {
             completionItems.push({
-                'label': suggestion.token_str
+                'label': capitalize(suggestion.token_str)
             });
         }
         
